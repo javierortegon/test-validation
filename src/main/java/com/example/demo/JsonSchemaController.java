@@ -6,13 +6,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class JsonSchemaController {
     @Autowired
     private JsonSchemaValidationService service;
 
     @PostMapping("/validate")
-    public String validateEvent(@RequestBody JsonNode jsonNode) {
+    public List<ResponseData> validateEvent(@RequestBody JsonNode jsonNode) {
         return service.validateJson(jsonNode);
     }
 }
